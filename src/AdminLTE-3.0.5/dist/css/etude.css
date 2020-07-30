@@ -1,0 +1,76 @@
+/*etude.css*/
+/*ステップフロー表示部分*/
+
+.cp_stepflow01 {
+     font-size: 80%;
+     display: -webkit-box;
+     display: -ms-flexbox;
+     display: flex;
+     margin: 20px 5px 5px 5px;
+     padding: 0;
+   }
+   .cp_stepflow01 > li {
+     position: relative;
+     display: block;
+     width: auto;
+     margin: 0;
+     padding: 0;
+     list-style: none;
+     text-align: center;
+     text-overflow: ellipsis;
+     color: #b0bec5;
+      -ms-flex: 1;
+     -moz-flex: 1;
+     -webkit-box-flex: 1;
+          flex: 1;
+   }
+   .cp_stepflow01 > li .bubble {
+     display: block;
+     width: 20px;
+     height: 20px;
+     margin: 0 auto 0.5em;
+     border-radius: 1000px;
+     background-color: #b0bec5;
+   }
+   .cp_stepflow01 > li .bubble::after,
+   .cp_stepflow01 > li .bubble::before {
+     position: absolute;
+     top: 9px;
+     display: block;
+     width: 100%;
+     height: 3px;
+     content: '';
+     background-color: #b0bec5;
+   }
+   .cp_stepflow01 > li.completed,
+   .cp_stepflow01 > li.completed .bubble {
+     color: #00acc1;
+   }
+   .cp_stepflow01 > li.completed .bubble,
+   .cp_stepflow01 > li.completed .bubble::after,
+   .cp_stepflow01 > li.completed .bubble::before {
+     background-color: #4dd0e1;
+   }
+   .cp_stepflow01 > li:last-child .bubble::after,
+   .cp_stepflow01 > li:last-child .bubble::before {
+     width: 0%;
+     margin-right: 50%;
+   }
+   .cp_stepflow01 > li.active,
+   .cp_stepflow01 > li.active .bubble {
+     font-weight: bold;
+     color: #f57c00;
+   }
+   .cp_stepflow01 > li.active .bubble,
+   .cp_stepflow01 > li.active .bubble::after,
+   .cp_stepflow01 > li.active .bubble::before {
+     background-color: #fb8c00;
+   }
+   .container{
+     padding-top: 30px;
+     padding-bottom: 30px;
+   }
+
+
+
+
