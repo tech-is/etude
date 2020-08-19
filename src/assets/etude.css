@@ -1,4 +1,3 @@
-/*etude3.css*/
 /*ステップフロー表示部分*/
 .cp_stepflow01 {
   font-size: 80%;
@@ -67,48 +66,22 @@
   background-color: #fb8c00;
 }
 /*1.利用規約・プライバシー保護画面*/
-.container{
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
 .privacy {
-  width: 600px;
+  width: auto;
   margin: 0 auto;
   text-align: left;
 }
 .privacy_inner {
-  height: 200px;
+  height: 300px;
   overflow: auto;
-  padding: 10px;
+  width: auto;
   background: #ddd;
-  margin-bottom: 20px;
+  margin: 20px 10px 5px 10px;
+  padding: 0;
 }
 .privacy_ttl{
   margin-top: 20px;
   font-size: 14px;
-}
-.privacy_agreement{
-  text-align: center;
-}
-#SMP_STYLE label.checkAgree{
-  padding: 8px 20px;
-  border: solid 2px #c3fa71;
-  font-size: 1.5em;
-}
-/*タブレット*/
-.privacy {
-  width: 100%;
-  margin: 0 auto;
-  text-align: left;
-}
-/*スマートフォン*/
-.privacy_inner {
-  height: 200px;
-  overflow: auto;
-  overflow-x: hidden;
-  padding: 10px;
-  background: #ddd;
-  margin-bottom: 20px;
 }
 /*予約内容変更画面*/
 /*チェックボックス*/
