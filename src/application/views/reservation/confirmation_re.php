@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-info">
             <div class="card-header">
-              <h1 class="card-title">登録内容確認</h1></h3>
+              <h1 class="card-title">登録内容確認</h1>
             </div>
             <ul class="cp_stepflow01">
               <li class="completed"><span class="bubble"></span>メールアドレス入力</li>
