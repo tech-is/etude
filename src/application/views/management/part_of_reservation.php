@@ -21,7 +21,7 @@
                 <ul class="col-6"><?php echo $booking_data['people_num']; ?>人</ul>
                 <ul class="col-6" style="text-align: right;">予約日時：</ul>
                 <ul class="col-6"><?php echo $booking_data['booking_date']; ?> <?php echo date('G:i', strtotime($booking_data['start_time'])); ?>～<?php echo date('G:i', strtotime($booking_data['end_time'])); ?></ul>
-                <?php if ($booking_data['people_num']== '1') : ?>
+                <?php if ($booking_data['people_num']!= '1') : ?>
                   <?php if (!empty($visitor_data)) : ?>
                     <?php for ($value=1; $value < $booking_data['people_num']; $value++) :?>
                       <ul class="col-6" style="text-align: right;">参加者氏名<?php echo $visitor_data[$value]['number'];?>：</ul>
