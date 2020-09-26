@@ -17,12 +17,12 @@
                 <li class="completed"><span class="bubble"></span>案内</li>
                 <li class="active"><span class="bubble"></span>全員終了</li>
               </ul>
-            <form role="form">
+            <form role="form" action="/Group/finish" method="post" >
               <div class="card-body">
                   <p class="text-danger" style="text-align:center">ご協力ありがとうございました</p>
               </div>
               <div class="card-footer" style="text-align:center">
-                <button type="submit" class="btn btn-primary">全員終了</button>
+                <button type="submit" name="finish" class="btn btn-primary">全員終了</button>
               </div>
             </form>
           </div><!-- /.card-info -->
