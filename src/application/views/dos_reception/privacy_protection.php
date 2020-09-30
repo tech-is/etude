@@ -17,7 +17,7 @@
               <li class="completed"><span class="bubble"></span>案内</li>
               <li><span class="bubble"></span>全員終了</li>
             </ul>
-            <form role="form">
+            <form role="form" method="post" action="/Group/assent">
               <div class="card-body">
                 <div class="privacy">
                   <p class="privacy_ttl">個人情報の利用目的について</p>
@@ -52,10 +52,10 @@
                     <p class="text-danger" style="text-align:center">ご協力・ご理解をいただけない場合は、入場をお断りさせていただきます。</p>
                 </div><!--/.privacy -->             
               </div><!--/.card-body-->
-                <div class="card-footer" style="text-align:center">
-                  <button type="submit" class="btn btn-secondary">TOPに戻る</button>
-                  <button type="submit" class="btn btn-primary">同意する</button>
-                </div><!--/.card-footer -->
+              <div class="card-footer" style="text-align:center">
+                <button type="submit" name="no" class="btn btn-secondary">TOPに戻る</button>
+                <button type="submit" name="yes" class="btn btn-primary">同意する</button>
+              </div><!--/.card-footer -->
             </form>
           </div><!--/.card-info -->
         </div><!--/.card -->
