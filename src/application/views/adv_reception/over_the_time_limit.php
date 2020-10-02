@@ -16,37 +16,37 @@
               </ul>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form">
+              <form role="form" action="/index.php/Group/validity_check" method="post">
                 <div class="card-body" >
                   <div class="row">
                     <ul class="col-6" style="text-align: right;">フリガナ：</ul>
-                    <ul class="col-6">マツヤマタロウ</ul>
+                    <ul class="col-6"><?php echo htmlspecialchars($booking_data['booker_yomi']); ?></ul>
                     <ul class="col-6" style="text-align: right;">代表者氏名（参加者氏名１）：</ul>
-                    <ul class="col-6">松山太郎</ul>
-                    <!-- <ul class="col-6" style="text-align: right;">メールアドレス：</ul>
-                    <ul class="col-6">aaaaaaa@bbbbb.mail</ul> -->
+                    <ul class="col-6"><?php echo htmlspecialchars($booking_data['booker']); ?></ul>
+                    <ul class="col-6" style="text-align: right;">メールアドレス：</ul>
+                    <ul class="col-6"><?php echo htmlspecialchars($booking_data['booker_email']); ?></ul>
                     <ul class="col-6" style="text-align: right;">代表者電話番号：</ul>
-                    <ul class="col-6">888-888-8888</ul>
+                    <ul class="col-6"><?php echo htmlspecialchars($booking_data['booker_tel']); ?></ul>
                     <ul class="col-6" style="text-align: right;">人数：</ul>
-                    <ul class="col-6">5人</ul>
+                    <ul class="col-6"><?php echo htmlspecialchars($booking_data['people_num']); ?>人</ul>
                     <ul class="col-6" style="text-align: right;">予約日時：</ul>
-                    <ul class="col-6">2020/06/30 10:00～15:00</ul>
-                    <ul class="col-6" style="text-align: right;">参加者氏名２：</ul>
-                    <ul class="col-6">マツヤマジロウ</ul>
-                    <ul class="col-6" style="text-align: right;">参加者氏名３：</ul>
-                    <ul class="col-6">マツヤマサブロウ</ul>
-                    <ul class="col-6" style="text-align: right;">参加者氏名４：</ul>
-                    <ul class="col-6">マツヤマシロウ</ul>
-                    <ul class="col-6" style="text-align: right;">参加者氏名５：</ul>
-                    <ul class="col-6">マツヤマゴロウ</ul>
-                  </div>
+                    <ul class="col-6"><?php echo htmlspecialchars($booking_data['booking_date']); ?> <?php echo htmlspecialchars(date('G:i', strtotime($booking_data['start_time']))); ?>～<?php echo htmlspecialchars(date('G:i', strtotime($booking_data['end_time']))); ?></ul>
+                    <?php if ($booking_data['people_num']!= 1) : ?>
+                      <?php if (!empty($visitor_data)) : ?>
+                        <?php for ($value=1; $value < $booking_data['people_num']; $value++) :?>
+                          <ul class="col-6" style="text-align: right;">参加者氏名<?php echo htmlspecialchars($visitor_data[$value]['number']);?>：</ul>
+                          <ul class="col-6"><?php echo htmlspecialchars($visitor_data[$value]['name']);?></ul>
+                        <?php endfor; ?>
+                      <?php endif; ?>
+                    <?php endif; ?>
+                  </div><!-- /.row -->
                 </div><!-- /.card-body -->
-                <div class="card-footer" style="text-align:center">
-                  <p class="text-danger" style="text-align:center"><small>大変申し訳ございませんが、受付時間外となっております。</small></p>
-                  <p class="text-danger" style="text-align:center"><small>当日受付または事前予約より空き状況をご確認の上、</small></p>
-                  <p class="text-danger" style="text-align:center"><small>再度お申込みください。</small></p>
+                <div class="card-footer text-center">
+                  <!-- <?php $message = $_SESSION['error_message']?> -->
+                  <p class="text-danger" style="text-align:center"><small>大変申し訳ございませんが、<?php echo htmlspecialchars($_SESSION['error_message_1']);?></small></p>
+                  <p class="text-danger" style="text-align:center"><small><?php echo htmlspecialchars($_SESSION['error_message_2']);?></small></p>
 
-                  <button type="submit" class="btn btn-primary">終了</button>
+                  <button type="button" class="btn btn-primary" onclick="history.back()">終了</button>
                 </div><!-- card-footer -->
               </form>
           </div><!--/.card-info -->
