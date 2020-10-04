@@ -21,8 +21,8 @@
                 <div class="card-body" >
                       <div class="form-group">
                         <label for="exampleInputEmail1"><span class="label label-danger" style="color: red;">必須:</span> 検温結果を入力してください</label>
-                        <p><?=htmlspecialchars($_SESSION['full_name'][$visitor_num]) ??"ゲスト" ?>様</p>
-                        <input type="hidden" name="visitor_num" value="<?= $visitor_num ?>">
+                        <p><?php echo htmlspecialchars($_SESSION['full_name'][$visitor_num]) ??"ゲスト" ?>様</p>
+                        <input type="hidden" name="visitor_num" value="<?php echo htmlspecialchars($visitor_num) ?>">
                         <input type="number" step="0.1" max="42.0" min="34.5" class="form-control" id="exampleInputEmail1" placeholder="36.8" name="temperature" required>
                       </div>
                 </div><!-- /.card-body -->
