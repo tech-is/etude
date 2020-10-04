@@ -16,6 +16,7 @@
             </ul>
             <div class="card-body text-center">
               <p>登録完了しました</br>来店お待ちしております。</p>
+              <p>登録されたメールに入店時に必要なQRコードと予約情報のリンクを送りました。ご確認ください</p>
             </div>
           </div><!--/.card-info -->
         </div><!--/.card -->
