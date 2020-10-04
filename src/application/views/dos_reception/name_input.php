@@ -17,42 +17,41 @@
                 <li class="completed"><span class="bubble"></span>案内</li>
                 <li><span class="bubble"></span>全員終了</li>
               </ul>
-              <form role="form">
+              
+              <!-- バリデーション機能 -->
+              <?php echo form_open('/Group/check'); ?>
+              <!-- <form role="form" method="post" action="/Group/check"> -->
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">フリガナ：</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter name" >
+                    <label for="exampleInputEmail1"> ※フリガナ：</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="enter_name" placeholder="Enter name" value="<?php if(!empty($enter_name))echo htmlspecialchars($enter_name); ?>">
+                    <small style="color: red;"><?php echo form_error('enter_name'); ?></small>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1"><span class="label label-danger" style="color: red;">必須</span> 代表者氏名（参加者氏名１）：</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="reservation full name" required>
+                    <label for="exampleInputEmail1"> ※代表者氏名：</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="full_name_1" placeholder="reservation full name" value="<?php if(!empty($full_name_1))echo htmlspecialchars($full_name_1); ?>">
+                    <small style="color: red;"><?php echo form_error('full_name_1'); ?></small>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1"><span class="label label-danger" style="color: red;">必須</span> 代表者電話番号：</label>
-                    <input type="tel" class="form-control" id="exampleInputEmail1" placeholder="031234567" required>
-                    <p style="color: red;">※こちらから連絡する際に使用します</p>
+                    <label for="exampleInputEmail1"> ※代表者電話番号：</label>
+                    <input type="tel" class="form-control" id="exampleInputEmail1" name="tel" placeholder="09012341234" value="<?php if(!empty($tel))echo htmlspecialchars($tel); ?>">
+                    <small style="color: red;"><?php echo form_error('tel'); ?></small>
+                    <small style="color: red;">※連絡が必要になった場合は、代表者の方へご連絡いたします</small>
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">参加者氏名２：</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="participant full name 2" >
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">参加者氏名３：</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="participant full name 3" >
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">参加者氏名４：</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="participant full name 4" >
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">参加者氏名５：</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="participant full name 5">
-                  </div>
+
+                  <?php if ($_SESSION['people_num']!= 1) : ?>
+                        <?php for ($value=0; $value < $_SESSION['people_num']; $value++) :?>
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">参加者氏名<?php echo $value+1;?>：</label>
+                              <input type="text" class="form-control" id="exampleInputEmail1" name="full_name_<?php echo $value+1;?>" placeholder="participant full name <?php echo $value+1;?>" value="<?php if(!empty($full_name_2))echo htmlspecialchars($full_name_2); ?>">
+                            </div>
+                        <?php endfor; ?>
+                  <?php endif; ?>
                     <p class="text-danger" style="text-align:center">まだ予約は確定されていません</p>
                 </div> 
                 <div class="card-footer" style="text-align:center">
-                  <button type="submit" class="btn btn-secondary">戻る</button>
-                  <button type="submit" class="btn btn-primary">確認へ</button>
+                  <button type="submit" name="no" class="btn btn-secondary">戻る</button>
+                  <button type="submit" name="yes" class="btn btn-primary">確認へ</button>
                 </div>
               </form>
           </div><!-- /.card-info -->
@@ -62,4 +61,3 @@
   </div><!-- /.container-fruid -->
 </body>
 </html>
-
