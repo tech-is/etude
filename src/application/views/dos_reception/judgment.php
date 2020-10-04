@@ -23,14 +23,14 @@
               <form role="form" action="/Group/temperature_measurement" method="post">
               <?php } ?>
               <!-- 検温結果を受け取る -->
-              <?php if($value<=37.5){ ?>
+              <?php if($value<37.5){ ?>
                 <div class="card-body">
                     <p class="text-danger" style="text-align:center">検温のご協力ありがとうございました</p>
                     <p class="text-danger" style="text-align:center">ご入館ください</p>
                 </div>
               <?php }else{ ?>
                 <div class="card-body" >
-                    <p class="text-danger" style="text-align:center">体温が37.5度以上の方は、</p>
+                    <p class="text-danger" style="text-align:center">体温が37.5度を超える方は、</p>
                     <p class="text-danger" style="text-align:center">入館をお断りしております。</p>
                     <p class="text-danger" style="text-align:center">従業員の誘導に従い、</p>
                     <p class="text-danger" style="text-align:center">再測定にご協力ください。</p>
