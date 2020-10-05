@@ -89,3 +89,44 @@
   width: 90%;
   margin: 2em auto;
 }
+
+.confirmtableth {
+  text-align: right; 
+  width: 40%;
+}
+.confirmtabletd {
+  text-align: right; 
+  width: 60%;
+}
+.confirmtable{
+  width: 100%;
+}
+
+td.fc-sat {
+  background-color: #eaf4ff;
+}
+td.fc-sun {
+  background-color: #ffeaea;
+}
+
+.graphcol {
+  background-color: #aaffaa;
+  text-align: center;
+  border:solid 1px;
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.limit-red {
+  background-color: red;
+}
+.limit-yellow {
+  background-color: yellow;
+}
+.limit-blue {
+  background-color: skyblue;
+}
+.limit-grey {
+  background-color: grey;
+}
