@@ -15,7 +15,8 @@
               <li class="completed"><span class="bubble"></span>完了</li>
             </ul>
             <div class="card-body text-center">
-              <p>入力されたアドレスに登録用URLを発行しました。</br>ご確認ください</p>
+              <p>入力されたアドレスに登録用URLを発行しましたのでご確認ください</p>
+              <p>メールが届かない場合はもう一度メールアドレスを確認して入力し直してください</p>
             </div>
           </div><!--/.card-info -->
         </div><!--/.card -->

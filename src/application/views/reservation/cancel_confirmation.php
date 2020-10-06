@@ -7,7 +7,7 @@
             <div class="card-header">
               <h1 class="card-title">予約キャンセル確認</h1>
             </div>
-            <form method="post" role="form" action = "<?php base_url();?>/index.php/Reservation/delete_reserve_data">
+            <form method="post" role="form" action = "<?php base_url();?>/Reservation/delete_reserve_data">
               <div class="card-body">
                 <!--テーブルは初期状態が100%でない-->
                 <table class="confirmtable">
@@ -44,7 +44,7 @@
                 </table>
                 <p style="color:red">以下のボタンを押すと削除が完了します。</p>
               </div><!--/.card-body -->
-              <input type="hidden" name="token"       value=<?php echo($token); ?>>
+              <input type="hidden" name="token" value=<?php echo($token); ?>>
               <!-- csrfチェック -->
               <input type="hidden" name="<?php echo($csrf_token_name);?>" value="<?php echo($csrf_token_hash);?>">
               <div class="card-footer" style="text-align:center">
