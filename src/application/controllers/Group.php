@@ -20,13 +20,13 @@ class Group extends CI_Controller
 	//1.当日受付選択後
 	public function dos_login()
 	{
-		if(isset($_POST['btn_dos']))
-		{
+		// if(isset($_POST['btn_dos']))
+		// {
 			//利用規約等同意確認画面
 			$this->load->view('header');
 			$this->load->view('dos_reception/privacy_protection');
 			$this->load->view('footer');
-        }
+        // }
 	}
 	//2.
 	public function assent()
