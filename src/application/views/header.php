@@ -17,5 +17,8 @@
   <link rel="stylesheet" href="<?= base_url(); ?>assets/etude.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+  <link href='<?= base_url(); ?>fullcalendar-4.4.2/packages/core/main.css' rel='stylesheet' />
+  <link href='<?= base_url(); ?>fullcalendar-4.4.2/packages/daygridmain.css' rel='stylesheet' />
+  <link href='<?= base_url(); ?>fullcalendar-4.4.2/packages/timegridmain.css' rel='stylesheet' />
+  <link href='<?= base_url(); ?>fullcalendar-4.4.2/packages/list/main.css' rel='stylesheet' />
 </head>
