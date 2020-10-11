@@ -13,7 +13,7 @@
                 <table class="confirmtable">
                   <tr>
                     <th class="confirmtableth" >予約者氏名：</th>
-                    <td class="confirmtabletd"><?php if(!empty($booker_name))echo $booker_name; ?></td>
+                    <td class="confirmtabletd"><?php if(!empty($booker))echo $booker; ?></td>
                   </tr>
                   <tr>
                     <th class="confirmtableth">フリガナ：</th>
