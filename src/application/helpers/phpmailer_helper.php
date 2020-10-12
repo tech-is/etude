@@ -88,7 +88,7 @@ function phpmailer_send_confirm($data){
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = '予約受付完了メールです。';
         // $mail->Body    = '<p>以下のリンクを押すと受付用QRコードが表示されます</p><a href="http://etude.com/index.php/Reservation?encrypt_address='.$encrypt_address.'">http://etude.com/index.php/Reservation?encrypt_address='.$encrypt_address.'</a>';
-        $mail->Body    = '<p>以下のリンクを押すと受付用QRコードが表示されます</p><a href="http://etude.com/index.php/Qrcode?token='.$data['token'].'">QRコードと予約情報のリンクです</a><p>予約を削除したい場合は以下のリンクをクリックしてください</p><a href="http://etude.com/index.php/Reservation/cancel_reservation?token='.$data['token'].'">予約削除を行うためのリンクです。</a>';
+        $mail->Body    = '<p>以下のリンクを押すと受付用QRコードが表示されます</p><a href="http://etude.com/Qrcode?token='.$data['token'].'">QRコードと予約情報のリンクです</a><p>予約を削除したい場合は以下のリンクをクリックしてください</p><a href="http://etude.com/Reservation/cancel_reservation?token='.$data['token'].'">予約削除を行うためのリンクです。</a>';
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();

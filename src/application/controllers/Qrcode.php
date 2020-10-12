@@ -44,7 +44,7 @@ class Qrcode extends CI_Controller {
 
 		
 		$this->load->view('header');
-		$this->load->view('qr_view',$data);
+		$this->load->view('reservation/qr_view',$data);
 	}
 	
 }
