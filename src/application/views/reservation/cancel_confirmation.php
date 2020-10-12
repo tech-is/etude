@@ -33,7 +33,7 @@
                   </tr>
                   <tr>
                     <th class="confirmtableth" >予約日時：</th>
-                    <td class="confirmtabletd"><?php if(!empty($detail_visit_info))echo($detail_visit_info);?></td>
+                    <td class="confirmtabletd"><?php if(!empty($detail_date_info))echo($detail_date_info);?></td>
                   </tr>
                   <?php for($i=0;$i<$people_num-1;$i++){ ?>
                   <tr>

@@ -43,7 +43,7 @@
                 <?php for($i=0;$i<$people_num-1;$i++){ ?>
                 <tr>
                   <th class="confirmtableth">参加者<?php echo($i+2);?>：</th>
-                  <td class="confirmtabletd"><?php echo($visitor[$i]['name']);?></td>
+                  <td class="confirmtabletd"><?php echo($visitor[$i+1]['name']);?></td>
                 </tr>
                 <?php } ?>
               </table>
