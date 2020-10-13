@@ -17,32 +17,32 @@
           </div>
           <div class="row" >
             <div class="col-4" style="margin: 0 auto;">
-              <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+              <button type="submit" class="btn btn-primary btn-block" >Sign In</button>
             </div>
           </div>
         </form>
-        <script src="<?= base_url(); ?>AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
-        <script>
-            $('#form').on('submit',function() {
-                event.preventDefault();
-                $.ajax({
-                    url: '/index.php/management/Auth_check',
-                    type: 'POST',
-                    data: {
-                        'admin_password':$('#admin_password').val()
-                    },
-                    datatype: 'json'
-                }).then(
-                function (data) {
-                    window.location.href = "/index.php/management/all_display";
-                },
-                function (error) {
-                    let err_msg = JSON.parse(error.responseText);
-                    alert(err_msg.message);
-                })
-            });
-        </script>
       </div><!-- /.card-body login-card-body -->
     </div><!-- /.card -->
   </div><!-- /.login-box -->
 </body>
+  <script src="<?php base_url(); ?>/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
+          <script>
+              $('#form').on('submit',function() {
+                  event.preventDefault();
+                  $.ajax({
+                      url: '<?php base_url(); ?>/Management/Auth_check',
+                      type: 'POST',
+                      data: {
+                          'admin_password':$('#admin_password').val()
+                      },
+                      datatype: 'json'
+                  }).then(
+                  function (data) {
+                      window.location.href = "<?php base_url(); ?>/Management/all_display";
+                  },
+                  function (error) {
+                      let err_msg = JSON.parse(error.responseText);
+                      alert(err_msg.message);
+                  })
+              });
+          </script>
