@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-12 text-right">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/index.php/">ログアウト</a></li>
+            <li class="breadcrumb-item"><a href="/">ログアウト</a></li>
           </ol>
         </div>
       </div>
@@ -97,7 +97,7 @@
                         <?php foreach ($booking_array as $value) : ?>
                           <tr class="text-center">
                             <td><?php echo htmlspecialchars($value['id']); ?></td>
-                            <td><a href="/index.php/Management/confirmation?id=<?php echo htmlspecialchars($value['id']); ?>"><?php echo htmlspecialchars($value['booker']); ?></a></td>
+                            <td><a href="<?php base_url(); ?>/Management/confirmation?id=<?php echo htmlspecialchars($value['id']); ?>"><?php echo htmlspecialchars($value['booker']); ?></a></td>
                             <td><?php echo htmlspecialchars($value['booker_yomi']); ?></td>
                             <td>
                               <time>
@@ -139,7 +139,7 @@
                           <?php if(date('Y/n/d', strtotime($value['booking_date'])) == date("Y/n/d")):?>
                             <tr class="text-center">
                               <td><?php echo htmlspecialchars($value['id']); ?></td>
-                              <td><a href="/index.php/Management/confirmation?id=<?php echo htmlspecialchars($value['id']); ?>"><?php echo htmlspecialchars($value['booker']); ?></a></td>
+                              <td><a href="<?php base_url(); ?>/Management/confirmation?id=<?php echo htmlspecialchars($value['id']); ?>"><?php echo htmlspecialchars($value['booker']); ?></a></td>
                               <td><?php echo htmlspecialchars($value['booker_yomi']); ?></td>
                               <td>
                                 <time>
