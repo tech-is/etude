@@ -18,7 +18,7 @@
                 <li class="completed"><span class="bubble"></span>案内</li>
                 <li><span class="bubble"></span>全員終了</li>
               </ul>
-              <form role="form" action="/index.php/Group/change" method="post">
+              <form role="form">
                 <div class="card-body">
                   <div class="row">
                     <ul class="col-6" style="text-align: right;">フリガナ：</ul>
@@ -45,8 +45,8 @@
                 </div><!-- /.card-body -->
                 <div class="card-footer" style="text-align:center">
                   <p class="text-danger" style="text-align:center">予約時間の変更や、人数を増やす変更はできません。</p>
-                  <button type="button" class="btn btn-secondary" onclick="location.href='/index.php/Group/change?id=<?php echo htmlspecialchars($booking_data['id']); ?>'">変更する</button>
-                  <button type="submit" class="btn btn-primary" href="/index.php/Group/temperature_measurement?id=<?php echo htmlspecialchars($booking_data['id']); ?>">検温へ</button>
+                  <button type="button" class="btn btn-secondary" onclick="location.href='<?php base_url(); ?>/Group_adv/change/'">変更する</button>
+                  <button type="button" class="btn btn-primary" onclick="location.href='<?php base_url(); ?>/Group_adv/temperature_measurement/'">検温へ</button>
                 </div><!-- /.card-footer -->
               </form>
           </div><!--/.card-info -->

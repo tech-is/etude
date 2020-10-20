@@ -18,7 +18,7 @@
                 <li class="completed"><span class="bubble"></span>案内</li>
                 <li><span class="bubble"></span>全員終了</li>
               </ul>
-              <form role="form" method="post" action="/index.php/Group/change_confirmation">
+              <form role="form" action="<?php base_url(); ?>/Group/change_confirmation" method="post">
                 <div class="card-body" >
                   <p class="text-danger" style="text-align:center"><small>予約時間の変更はできません</small></p>
                   <div class="row">
@@ -53,19 +53,9 @@
                       <?php endif; ?>
                 </div><!-- /.cp_ipcheck -->
                 <div class="card-footer" style="text-align:center">
-                  <button type="button" class="btn btn-secondary" onclick="location.href='/index.php/Group/validity_check'">戻る</a>
-                  <button type="submit" class="btn btn-primary" onclick="location.href='/index.php/Group/change_confirmation?id=<?php echo htmlspecialchars($booking_data['id']); ?>'">確認する</button>
+                  <button type="button" class="btn btn-secondary" onclick="location.href='<?php base_url(); ?>/Group_adv/confirmation'">戻る</a>
+                  <button type="submit" class="btn btn-primary" >確認する</button>
                   <input type="hidden" name="id" value="<?php echo htmlspecialchars($booking_data['id']); ?>">
-                  <!-- <input type="hidden" name="booker" value="<?php echo htmlspecialchars($booking_data['booker']); ?>"> -->
-                  <input type="hidden" name="people_num" value="<?php echo htmlspecialchars($booking_data['people_num']); ?>">
-                    <?php if ($booking_data['people_num']!= 1) : ?>
-                      <?php if (!empty($visitor_data)) : ?>
-                        <?php for ($value=1; $value < $booking_data['people_num']; $value++) :?>
-                          <input type="hidden" name="number[<?php echo htmlspecialchars($value);?>]" value="<?php echo htmlspecialchars($visitor_data[$value]['number']); ?>">
-                          <input type="hidden" name="name'<?php echo htmlspecialchars($value);?>'" >
-                        <?php endfor; ?>
-                      <?php endif; ?>
-                    <?php endif; ?>
                 </div>
               </form>
           </div><!--/.card-info -->

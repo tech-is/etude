@@ -18,7 +18,7 @@
                 <li class="completed"><span class="bubble"></span>案内</li>
                 <li><span class="bubble"></span>全員終了</li>
               </ul>
-              <form role="form" action="/index.php/Group/modify_data_temperature_measurement"method="post">
+              <form role="form" action="<?php base_url(); ?>/Group/modify_data_temperature_measurement"method="post">
                 <div class="card-body" >
                   <div class="row">
                     <ul class="col-6" style="text-align: right;">フリガナ：</ul>
@@ -46,21 +46,19 @@
                 </div><!-- /.card-body -->
                 <div class="card-footer" style="text-align:center">
                   <button type="button" class="btn btn-secondary" onclick="history.back()">戻る</button>
-                  <button type="submit" class="btn btn-primary" onclick="location.href='/index.php/Group/modify_data_temperature_measurement?id=<?php echo htmlspecialchars($booking_data['id']); ?>'">変更内容の登録、検温へ</button>
+                  <button type="submit" class="btn btn-primary" onclick="location.href='<?php base_url(); ?>/Group/modify_data_temperature_measurement?id=<?php echo htmlspecialchars($booking_data['id']); ?>'">変更内容の登録、検温へ</button>
                   <input type="hidden" name="id" value="<?php echo htmlspecialchars($booking_data['id']); ?>">
                   <input type="hidden" name="people_num" value="<?php echo htmlspecialchars($booking_data['people_num']); ?>">
-                  <!-- <?php if ($_SESSION['people_num'] != 1) : ?> -->
-                      <?php for ($value=2; $value <= 5; $value++) :?>
-                        <?php if(!empty($_SESSION['check_flag'][$value])) : ?>
-                          <?php $num = $value-1; ?>
-                          <!-- <ul class="col-6" style="text-align: right;">参加者氏名<?php echo htmlspecialchars($value);?>：</ul> -->
-                          <input type="hidden" name="number[<?php echo htmlspecialchars($value);?>]" value="$value">
-                          <!-- <ul class="col-6"><?php echo htmlspecialchars($_SESSION["name{$num}"]);?></ul> -->
-                          <?php $name = $_SESSION["name{$num}"]?>
-                          <input type="hidden" name="name[<?php echo htmlspecialchars($value);?>]" value="<?php echo htmlspecialchars($name);?>">
-                        <?php endif; ?>
-                      <?php endfor; ?>
-                    <!-- <?php endif; ?> -->
+                  <?php if ($_SESSION['people_num'] != 1) : ?>
+                    <?php for ($value=2; $value <= 5; $value++) :?>
+                      <?php if(!empty($_SESSION['check_flag'][$value])) : ?>
+                        <?php $num = $value-1; ?>
+                        <input type="hidden" name="number[<?php echo htmlspecialchars($value);?>]" value="$value">
+                        <?php $name = $_SESSION["name{$num}"]?>
+                        <input type="hidden" name="name[<?php echo htmlspecialchars($value);?>]" value="<?php echo htmlspecialchars($name);?>">
+                      <?php endif; ?>
+                    <?php endfor; ?>
+                  <?php endif; ?>
                 </div>
               </form>
           </div><!--/.card-info -->
