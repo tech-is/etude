@@ -15,8 +15,6 @@
               <li class="bubble"><span class="bubble"></span>完了</li>
             </ul>
             <img class="mx-auto d-block" src="<?= base_url(); ?>assets/onegai.jpg" alt="お願い画面">
-            <!-- <form role="form" action = "/index.php/Reservation/view_detail_input_reserve"> -->
-            <!-- <form  method="post" role="form" action = "/index.php/Qrcode/qr_disp"> -->
             <form  method="post" role="form" action = "<?= base_url();?>/Reservation/sendMail">
               <div class="card-body">
                 <div class="form-group">

@@ -56,19 +56,6 @@
                 </table>
                 <p style="color:red" class="text-center">以下の完了ボタンを押すと予約が確定されます。</p>
               </div><!--/.card-body -->
-              <!-- <input type="hidden" name="booker"         value=<?php echo($booker_name); ?>>
-              <input type="hidden" name="booker_yomi"    value=<?php echo($booker_yomi); ?>>
-              <input type="hidden" name="booker_tel"     value=<?php echo($booker_tel); ?>>
-              <input type="hidden" name="booker_email"   value=<?php echo($booker_email); ?>>
-              <input type="hidden" name="booking_date"   value=<?php echo($booking_date); ?>>
-              <input type="hidden" name="start_time"     value=<?php echo($start_time); ?>>
-              <input type="hidden" name="end_time"       value=<?php echo($end_time); ?>>
-              <input type="hidden" name="booking_status" value="0">
-              <input type="hidden" name="people_num"     value=<?php echo($people_num); ?>>
-              <input type="hidden" name="visitor1"       value=<?php echo($visitor1); ?>>
-              <input type="hidden" name="visitor2"       value=<?php echo($visitor2); ?>>
-              <input type="hidden" name="visitor3"       value=<?php echo($visitor3); ?>>
-              <input type="hidden" name="visitor4"       value=<?php echo($visitor4); ?>> -->
               <!-- csrfチェック -->
               <input type="hidden" name="<?php echo(html_escape($csrf_token_name));?>" value="<?php echo(html_escape($csrf_token_hash));?>">
               <div class="card-footer" style="text-align:center">
