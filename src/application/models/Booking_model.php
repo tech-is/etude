@@ -18,7 +18,16 @@ class Booking_model extends CI_Model {
             ->result_array();
     }
 
-    //Bookingテーブルから特定の予約・受付情報を呼び出す
+    //Bookingテーブルから読み込まれたQRコードと一致するtokenを持つidを取り出す
+    public function get_id($token)
+    {
+        return $this->db->where('token', $token)
+            ->select('id,')
+            ->get('booking')
+            ->row_array();
+    }
+
+    //Bookingテーブルから特定のidの予約・受付情報を呼び出す
     public function get_record($id)
     {
         return $this->db->where('id', $id)

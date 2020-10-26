@@ -16,7 +16,7 @@
               </ul>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" action="/index.php/Group/validity_check" method="post">
+              <form role="form">
                 <div class="card-body" >
                   <div class="row">
                     <ul class="col-6" style="text-align: right;">フリガナ：</ul>
@@ -45,8 +45,7 @@
                   <!-- <?php $message = $_SESSION['error_message']?> -->
                   <p class="text-danger" style="text-align:center"><small>大変申し訳ございませんが、<?php echo htmlspecialchars($_SESSION['error_message_1']);?></small></p>
                   <p class="text-danger" style="text-align:center"><small><?php echo htmlspecialchars($_SESSION['error_message_2']);?></small></p>
-
-                  <button type="button" class="btn btn-primary" onclick="history.back()">終了</button>
+                  <button type="button" class="btn btn-primary" onclick="location.href='<?php base_url(); ?>/Group_adv/'">終了</button>
                 </div><!-- card-footer -->
               </form>
           </div><!--/.card-info -->
