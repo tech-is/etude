@@ -9,7 +9,6 @@ class Reservation extends CI_Controller {
 		parent::__construct();
 		$this->load->library('session');
 		$this->load->helper('phpmailer');
-		//モデルをロードする
 		$this->load->model('Reserve_model');
 	}
 
@@ -55,8 +54,6 @@ class Reservation extends CI_Controller {
 		$token_time = intval($temp_data['token_time']);
 		$now = time();
 		
-		// var_dump($now-$token_time);
-		// exit;
 		//1800秒つまり30分を超えていたら期限が切れているページを表示する。
 		if(($now-$token_time)>1800){
 
@@ -74,18 +71,11 @@ class Reservation extends CI_Controller {
 			header('Location: http://etude.com/Reservation/view_error_message?errortype=2');
 			exit;
 		}
-
-		//予約登録情報とQRコードを表示するためのtokenを発行
+		
+		// //urlリンクからタブを2つ開かれるとセッションが被ってしまうのでそれが起こらない処理間に合えば
 		// $token= password_hash(time(),PASSWORD_DEFAULT);
-		// var_dump($token);
-		// exit;
-		// $_SESSION['token'] = $token;
-
-		// //urlリンクからタブを2つ開かれるとセッションが被ってしまうのでそれが起こらない処理
 		// $_SESSION[$token]['ffff']] = 4;
-		// print_r($_SESSION[$_SESSION['token']['ffff']]);
-		// print_r($_SESSION[$token]['ffff']);
-		// print_r($_SESSION[$token]);
+
 		//セッションで入力値は保持していく。
 		$_SESSION['booker_email'] = $mail['pre_regist_email'];
 
@@ -178,7 +168,6 @@ class Reservation extends CI_Controller {
 			exit;
 		}
 
-		// $book_data    = @$this->input->post(array('visit_date','start_time','end_time','people_num','email'))?: null;
 		$_SESSION['sample_name']=[
 			'松山次郎',
 			'松山三郎',
@@ -189,7 +178,6 @@ class Reservation extends CI_Controller {
 		//csrfチェック
 		$data['csrf_token_name'] = $this->security->get_csrf_token_name();
 		$data['csrf_token_hash'] = $this->security->get_csrf_hash();
-		
 
 		$this->load->view('header');
 		$this->load->view('reservation/name_input',$data);
@@ -203,7 +191,7 @@ class Reservation extends CI_Controller {
 			header('Location: http://etude.com/Reservation/view_error_message?errortype=5');
 			exit;
 		}
-		// $book_data    = @$this->input->post(array('visit_date','start_time','end_time','people_num','email','booker_name','booker_yomi','booker_tel','visitor1','visitor2','visitor3','visitor4'))?: null;
+
 		//参加者情報をpostから受け取る
 		$book_data    = @$this->input->post(array('booker_name','booker_yomi','booker_tel','visitor1','visitor2','visitor3','visitor4'))?: null;
 		
@@ -214,7 +202,6 @@ class Reservation extends CI_Controller {
 		$_SESSION['booker_tel'] = $book_data['booker_tel'];
 		
 		//画面表示用に予約日時用の文字列を作成する。
-		// $book_data['detail_visit_info'] = $book_data['visit_date'].'  '.$book_data['start_time'].':00 ~'.$book_data['end_time'].':00';
 		$_SESSION['detail_visit_info'] = $_SESSION['booking_date'].'  '.$_SESSION['start_time'].':00 ~'.$_SESSION['end_time'].':00';
 		
 		//参加者を連想配列の2次元配列にする（取り方だるそうなのでとりあえず直打ち表示をループで回すため）
@@ -223,15 +210,9 @@ class Reservation extends CI_Controller {
 		$_SESSION['visitor'][3] = $book_data['visitor3'];
 		$_SESSION['visitor'][4] = $book_data['visitor4'];
 		
-		var_dump($_SESSION);
-		// exit;
-
 		//postで受け取ってgetで表示する処理
 		header('Location: http://etude.com/Reservation/view_confirmation_re');
 		exit;
-
-		// $this->load->view('header');
-		// $this->load->view('reservation/confirmation_re',$data);
 	}
 	public function view_confirmation_re()
 	{
@@ -239,7 +220,6 @@ class Reservation extends CI_Controller {
 		$data['csrf_token_name'] = $this->security->get_csrf_token_name();
 		$data['csrf_token_hash'] = $this->security->get_csrf_hash();
 
-		var_dump($_SESSION);
 		$this->load->view('header');
 		$this->load->view('reservation/confirmation_re',$data);
 	}
@@ -253,22 +233,8 @@ class Reservation extends CI_Controller {
 			exit;
 		}
 
-		//visitor用のindex
-		// $i=1;
-		// foreach (array_keys($_POST) as $key) {
-		// 	if($_POST[$key]!=""){
-		// 		$post[$key] = $_POST[$key];
-
-		// 		//参加者(visitor情報)を登録用に配列にしておく
-		// 		if(strpos($key,'visitor') !== false){
-		// 			$visitor[$i++]=$_POST[$key];
-		// 		}
-		// 	}
-		// }
-
 		//予約登録情報とQRコードを表示するためのtokenを発行
 		$encrypted_data= password_hash(time(),PASSWORD_DEFAULT);
-		// $encrypted_data= password_hash($_SESSION['booker_email'],PASSWORD_DEFAULT);
 
 		//予約登録内容情報の形成
 		$booking_data=[
@@ -282,7 +248,6 @@ class Reservation extends CI_Controller {
 			'end_time'         => $_SESSION['end_time'],
 			'booking_status'   => 0,
 			'people_num'       => $_SESSION['people_num'],
-			// 'detail_date_info' => $_SESSION['detail_date_info'],
 		];
 
 		//画面表示用に予約日時用の文字列を作成する。
@@ -307,7 +272,6 @@ class Reservation extends CI_Controller {
 			header('Location: http://etude.com/Reservation/view_error_message?errortype=99');
 			exit;
 		}
-
 		
 		//予約者自身のデータ成形
 		$visitor_data[1]=[
@@ -329,8 +293,6 @@ class Reservation extends CI_Controller {
 		}
 		
 		//参加者情報成形
-		var_dump($visitor_data);
-		// exit;
 		$sql_flg = $this->Reserve_model->regist_visitor_info($visitor_data);
 
 		//登録に失敗値た時（想定できない）
@@ -362,10 +324,8 @@ class Reservation extends CI_Controller {
 		//postで受け取ってgetで表示する処理
 		header('Location: http://etude.com/Reservation/reserve_complete');
 		exit;
-
-		// $this->load->view('header');
-		// $this->load->view('reservation/complete');
 	}
+
 	//予約終了画面表示
 	public function reserve_complete()
 	{
@@ -386,7 +346,6 @@ class Reservation extends CI_Controller {
 		//リンクのトークンを取得
 		$token = @$this->input->get('token') ?: null;
 
-		// var_dump($token);
 		//トークンがない時（悪意あるアクセスの可能性）
 		if(!isset($token)){
 			header('Location: http://etude.com/Reservation/view_error_message?errortype=1');
@@ -501,9 +460,6 @@ class Reservation extends CI_Controller {
 
 		//予約可否判定前に予約可否フラグは削除する。
 		unset($_SESSION['book_unacceptable']);
-		// var_dump($_SESSION);
-
-		// var_dump($data);
 
 		//strposでstart_timeとend_timeの:が出てくる所を探索してそこまでをカットしintにできるようにする。。
 		$index_start = strpos($data['start_time'],':');
@@ -511,15 +467,10 @@ class Reservation extends CI_Controller {
 		$index_end = strpos($data['end_time'],':');
 		$input_end = intval(substr($data['end_time'],0,$index_end));
 
-		// var_dump($input_start);
-		// var_dump($input_end);
-		// exit;
 		
 		//予約日が同じ日のレコードを全て持ってくる。
 		$exsiting_data = $this->Reserve_model->get_allrecord_same_booking_date($data['booking_date']);
-		// var_dump($exsiting_data[0]['start_time']);
-		// var_dump(substr($exsiting_data[0]['start_time'],0,2));
-		
+
 		//1時間当たりの予約可能な残り人数を表す配列の作成
 		//例えば$bookable_array[1]の場合0時から1時まで予約可能人数を表す
 		$bookable_array = array_fill(1, 24, $limit_num_per_hour);
@@ -548,9 +499,6 @@ class Reservation extends CI_Controller {
 			}
 		}
 
-		// var_dump($bookable_array);
-		// var_dump($unacceptable_flg);
-		// exit;
 		//予約不可であれば指定された時間帯は現在予約できないというような表示を出すようにする？
 		if($unacceptable_flg===TRUE){
 			$_SESSION['book_unacceptable'] = 'その時間帯は予約できませんもう一度入力してください。';
@@ -558,16 +506,16 @@ class Reservation extends CI_Controller {
 			//postで来てgetで表示する
 			header('Location: http://etude.com/Reservation/view_detail_input_reserve');
 			exit;
-			// $this->view_detail_input_reserve($data['email']);
+
 		}else{
-			//
+
 			unset($_SESSION['book_unacceptable']);
 			$_SESSION['book_unacceptable'] = '';
 
 			//postで来てgetで表示する
 			header('Location: http://etude.com/Reservation/view_name_input_reserve');
 			exit;
-			// $this->view_name_input_reserve();
+
 		}
 	}
 
@@ -594,20 +542,13 @@ class Reservation extends CI_Controller {
 			}
 		}
 			
-		var_dump($Email1);
 		//メールアドレスを暗号化する。
-		// $encrypted_data = $this->encryption->encrypt($Email1);
-		// $encrypted_data= password_hash($Email1,PASSWORD_DEFAULT);
-		//↓のほうが良さげ
 		$encrypted_data= password_hash(time(),PASSWORD_DEFAULT);
 
 		//仮登録の期限用のtimestampを作る。
 		$token_time = time();
 
 		$data = array(
-			// 'temp_email'    => $Email1,
-			// 'token'         => $encrypted_data,
-			// 'token_time'    => $token_time,
 			'pre_regist_email'    => $Email1,
 			'token'         => $encrypted_data,
 			'token_time'    => $token_time,
@@ -623,15 +564,11 @@ class Reservation extends CI_Controller {
 		//postで送られたのでgetで表示する。という処理by清水氏
 		header('Location: http://etude.com/Reservation/view_confirm_mail');
 		exit;
-
-		// $this->load->view('header');
-		// $this->load->view('reservation/confirm_mail');
 	}
 
 	//メール確認画面促進画面
 	public function view_confirm_mail()
 	{
-		
 		$this->load->view('header');
 		$this->load->view('reservation/confirm_mail');
 	}
@@ -641,9 +578,7 @@ class Reservation extends CI_Controller {
 	{
 		$Email1    = @$this->input->post('Email1')?: null;
 	
-		var_dump($Email1);
 		//メールアドレスを暗号化する。
-		// $encrypted_data = $this->encryption->encrypt($Email1);
 		$encrypted_data= password_hash($Email1,PASSWORD_DEFAULT);
 
 		//仮登録の期限用のtimestampを作る。
@@ -656,7 +591,6 @@ class Reservation extends CI_Controller {
 		);
 
 		//メールを送る
-		// phpmailer_send($Email1,$encrypted_data);
 		phpmailer_send($data);
 		
 	}
@@ -705,8 +639,6 @@ class Reservation extends CI_Controller {
 			}
 		}
 		exit(json_encode(array('message' =>'認証成功','aiueo'=>$booking_date,'bookable_array'=>$bookable_array)));
-		// exit(json_encode(array('message' =>'認証成功','aiueo'=>$booking_date)));
-		// exit(json_encode(array('message' =>'認証成功','booking_date'=>$booking_data)));
 		
 	}
 }

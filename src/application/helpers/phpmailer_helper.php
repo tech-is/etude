@@ -37,9 +37,6 @@ function phpmailer_send($data){
         // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
         // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
-        // //メールの暗号化する
-        // $key = '長い鍵長い鍵長い鍵長い鍵長い鍵長い鍵長い鍵長い鍵長い鍵長い鍵';
-        // //暗号化用データをコピー
         // $plain_address = $to;
 
         // $encrypt_address = openssl_encrypt($plain_address,'AES-128-ECB', $key);
@@ -49,18 +46,15 @@ function phpmailer_send($data){
         // Content
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = '受付用QRコードです';
-        // $mail->Body    = '<p>以下のリンクを押すと受付用QRコードが表示されます</p><a href="http://etude.com/index.php/Reservation?encrypt_address='.$encrypt_address.'">http://etude.com/index.php/Reservation?encrypt_address='.$encrypt_address.'</a>';
         $mail->Body    = '<p>以下のリンクを押すと予約情報入力ページが表示されます</p><a href="http://etude.com/Reservation?token='.$data['token'].'">http://etude.com</a>';
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();
-        // echo 'Message has been sent';
+
     } catch (Exception $e) {
         //なんかログ残すか
-        
         header('Location: http://etude.com/Reservation/view_error_message?errortype=3');
         exit;
-        // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
 
@@ -87,7 +81,6 @@ function phpmailer_send_confirm($data){
         // Content
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = '予約受付完了メールです。';
-        // $mail->Body    = '<p>以下のリンクを押すと受付用QRコードが表示されます</p><a href="http://etude.com/index.php/Reservation?encrypt_address='.$encrypt_address.'">http://etude.com/index.php/Reservation?encrypt_address='.$encrypt_address.'</a>';
         $mail->Body    = '<p>以下のリンクを押すと受付用QRコードが表示されます</p><a href="http://etude.com/Qrcode?token='.$data['token'].'">QRコードと予約情報のリンクです</a><p>予約を削除したい場合は以下のリンクをクリックしてください</p><a href="http://etude.com/Reservation/cancel_reservation?token='.$data['token'].'">予約削除を行うためのリンクです。</a>';
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 

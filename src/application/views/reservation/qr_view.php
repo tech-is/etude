@@ -76,9 +76,6 @@
   <script type="text/javascript" src="<?= base_url(); ?>jquery-qrcode-master/src/jquery.qrcode.js"></script>
   <script type="text/javascript" src="<?= base_url(); ?>jquery-qrcode-master/src/qrcode.js"></script>
   <script>
-  // $(document.body).click(function(){
-  //   alert($("#token").text());
-  // });
   jQuery(function() {
     let qr;
     qr = jQuery('#token').text();

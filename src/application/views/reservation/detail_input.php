@@ -14,12 +14,9 @@
                             <li class="bubble"><span class="bubble"></span>内容確認</li>
                             <li class="bubble"><span class="bubble"></span>完了</li>
                         </ul>
-                        <!-- <?php echo($_SESSION['book_unacceptable']);?> -->
                         <?php if(isset($_SESSION['book_unacceptable'])): ?>
                         <?php echo('<p class="text-center">'.$_SESSION['book_unacceptable'].'</p>');?>
                         <?php endif;?>
-                        <!-- <form method="post" id="vali_form" role="form"
-                            action="<?php base_url();?>/Reservation/view_name_input_reserve"> -->
                         <form method="post" id="vali_form" role="form"
                             action="<?php base_url();?>/Reservation/bookable_check">
                             <div class="card-body">
@@ -61,14 +58,10 @@
                                             <option value="4">4人</option>
                                             <option value="5">5人</option>
                                         </select></p>
-                                        <!-- <input class="form-control" name="visit_num" type="text"
-                                            placeholder="Default input" id="num"> -->
                                     </div>
                                 </div>
                                 <!-- csrfチェック -->
                                 <input type="hidden" name="<?php echo($csrf_token_name);?>" value="<?php echo($csrf_token_hash);?>">
-                                <!-- <input type="hidden" name="email" value=<?php echo(html_escape($email)); ?>> -->
-                                <!-- <input type="hidden" name="email" value=<?php echo(html_escape($_SESSION['booker_email'])); ?>> -->
                             </div><!--/.card-body -->
                             <div class="card-footer" style="text-align:center">
                                 <button type="submit" class="btn btn-primary">次へ</button>
@@ -150,39 +143,6 @@
         }).then(
         //dataには通信成功時のデータが入っている
         function (data) {
-            // alert("AAA");
-            //すでにグラフが存在していると消す。
-            // $("#graph").remove();
-            //オブジェクトにパラメーターを指定してアクセスできる。
-            // console.log(data);
-            // let err_msg = JSON.parse(data);
-            //time_set直下にグラフを作成する。
-            // $('#time_set').after('<div id="graph" class="row"></div>');
-            // // console.log(err_msg);
-            // //24時間分のdivを表示
-            // for(var i =1;i<=24;i++){
-            //     $('#graph').prepend('<div class="graphcol col-1" >1</div>');
-            //     console.log(data.bookable_array[i]);
-            //     // $('.graphcol:last').html(data.bookable_array[i]);
-            // }
-            // // $(".graphcol").eq(5).html(data.bookable_array[5])
-            // //24時間分の予約可否状態を入力する。
-            // for(var i=0;i<24;i++){
-            //     $(".graphcol").eq(i).html(data.bookable_array[i+1])
-            //     //時間外はgrey
-            //     if(data.bookable_array[i+1] === -1){
-            //         $(".graphcol").eq(i).addClass("limit-grey");
-            //     //3人未満はred
-            //     }else if(data.bookable_array[i+1] <= 3){
-            //         $(".graphcol").eq(i).addClass("limit-red");
-            //     //6人未満はyellow
-            //     }else if(data.bookable_array[i+1] <= 6){
-            //         $(".graphcol").eq(i).addClass("limit-yellow");
-            //     //6人より多い時青色
-            //     }else if(data.bookable_array[i+1] > 6){
-            //         $(".graphcol").eq(i).addClass("limit-blue");
-            //     }
-            // }
 
             $("#myChart").remove();
             //time_set直下にグラフを作成する。

@@ -60,7 +60,6 @@ Class Reserve_model extends CI_Model {
     public function regist_visitor_info($visitor_data)
     {
         //予約登録情報(visitor)の入力
-        // return $this->db->insert('visitor', $visitor_data);
         return $this->db->insert_batch('visitor', $visitor_data);
     }
 
@@ -117,59 +116,6 @@ Class Reserve_model extends CI_Model {
         return $this->db->where('booking_date',$booking_date)
                         ->get('booking')
                         ->result_array();
-    }
-
-
-
-
-
-
-
-//////////////////////////////////////////////////////////////////////////
-
-    //データベースから情報全て取得する
-    public function get_all_board_data()
-    {
-        //日付順早い順で取得
-        return $this->db->order_by('post_date','DESC')
-            ->get('message')
-            //複数の配列をわたすのでrow_array()は使えない。
-            ->result_array();
-
-    }
-    //データベースから指定された数のレコードを取得する
-    public function get_limit_board_data($limit)
-    {
-        //日付順早い順で取得
-        return $this->db->limit($limit)
-                ->order_by('post_date','DESC')
-                ->get('message')
-                //複数の配列をわたすのでrow_array()は使えない。
-               ->result_array();
-
-    }
-    //データベースから引数$idで指定されたidの情報を取得する。
-    public function get_id_board_data($id)
-    {
-        return $this->db->where('id', $id)
-            ->select('id, view_name, message')
-            ->get('message')
-            ->row_array();
-    }
-
-    //掲示板の書き込み機能部（messageテーブルに書き込む)
-    public function bbs_writing($data)
-    {
-        //('テーブル名',書き込むデータ)
-        return $this->db->insert('message', $data);
-    }
-
-    //管理人による掲示板編集機能部
-    public function bbs_edit($id,$data)
-    {
-        //$idで指定した書き込みidの更新
-        return $this->db->where('id',$id)
-                        ->update('message',$data);
     }
 }
 ?>

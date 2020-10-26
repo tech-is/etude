@@ -23,10 +23,6 @@
                     <input class="form-control" name="booker_name" type="text" placeholder="田中太郎"
                       id="booker_name" value="<?php if(!empty($_SESSION['booker_name']))echo(html_escape($_SESSION['booker_name']));?>">
                   </div>
-                  <!-- <div class="col-6">
-                    <input class="form-control" name="first_name" type="text" placeholder="太郎"
-                      id="first_name">
-                  </div> -->
                 </div>
                 <label for="booker_yomi">代表者フリガナ</label>
                 <div class="row">
@@ -34,10 +30,6 @@
                     <input class="form-control" name="booker_yomi" type="text" placeholder="タナカタロウ"
                       id="booker_yomi" value="<?php if(!empty($_SESSION['booker_yomi']))echo(html_escape($_SESSION['booker_yomi']));?>">
                   </div>
-                  <!-- <div class="col-6">
-                    <input class="form-control" name="first_kana" type="text" placeholder="タロウ"
-                      id="first_kana">
-                  </div> -->
                 </div>
                 <label for="booker_tel">代表者電話番号</label>
                 <div class="row">
@@ -54,19 +46,10 @@
                     <!-- データベースに参加者はindexが1から始まるので$i+1 -->
                     <input class="form-control" type="text" placeholder="<?php echo(html_escape($_SESSION['sample_name'][$i])); ?>" id="visitor<?php echo(html_escape($i+1));?>" name="visitor<?php echo(html_escape($i+1));?>" value="<?php if(!empty($_SESSION['visitor'][$i+1]))echo(html_escape($_SESSION['visitor'][$i+1]));?>">
                   </div>
-                  <!-- <div class="col-6">
-                    <input class="form-control" type="text" placeholder="次郎"
-                      id="visit_time">
-                  </div> -->
                 </div>
                 <?php } ?>
               </div>
               <input type="hidden" name="<?php echo(html_escape($csrf_token_name));?>" value="<?php echo(html_escape($csrf_token_hash));?>">
-              <!-- <input type="hidden" name="visit_date" value="<?php echo($booking_date); ?>">
-              <input type="hidden" name="start_time" value="<?php echo($start_time); ?>">
-              <input type="hidden" name="end_time" value="<?php echo($end_time); ?>">
-              <input type="hidden" name="people_num" value="<?php echo($people_num); ?>">
-              <input type="hidden" name="email" value="<?php echo($email); ?>"> -->
               <!--/.card-body -->
               <div class="card-footer" style="text-align:center">
                 <button type="button" class="btn btn-secondary" onclick="location.href='view_detail_input_reserve'" >戻る</button>
