@@ -1,0 +1,119 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- ホスト: 127.0.0.1
+-- 生成日時: 2020-10-26 06:53:32
+-- サーバのバージョン： 10.4.11-MariaDB
+-- PHP のバージョン: 7.4.5
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- データベース: `etude`
+--
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `booking`
+--
+
+CREATE TABLE `booking` (
+  `id` int(11) NOT NULL,
+  `token` varchar(255) DEFAULT NULL,
+  `booker` varchar(255) NOT NULL,
+  `booker_yomi` varchar(255) NOT NULL,
+  `booker_tel` varchar(11) DEFAULT NULL,
+  `booker_email` varchar(255) DEFAULT NULL COMMENT '当日受付の場合は不要',
+  `booking_date` date NOT NULL COMMENT '予約日（予約あり）または受付日（予約なし）',
+  `start_time` time(6) NOT NULL,
+  `end_time` time(6) NOT NULL,
+  `people_num` int(11) NOT NULL,
+  `booking_status` int(11) NOT NULL COMMENT '0:予約済・受付待ち 1:受付完了・入館中 2:退館',
+  `detail_date_info` varchar(255) NOT NULL COMMENT '日付表示用'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='予約情報と受付情報の管理';
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `pre_regist`
+--
+
+CREATE TABLE `pre_regist` (
+  `id` int(11) NOT NULL,
+  `pre_regist_email` varchar(255) NOT NULL COMMENT '仮登録アドレス',
+  `token` varchar(255) NOT NULL COMMENT 'アドレスを暗号化',
+  `token_time` int(11) NOT NULL COMMENT 'トークンの開始時間'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='仮登録メール用のテーブル';
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `visitor`
+--
+
+CREATE TABLE `visitor` (
+  `id` int(11) NOT NULL,
+  `booking_id` int(11) NOT NULL COMMENT 'bookingのidを挿入',
+  `number` int(11) NOT NULL COMMENT '参加者順の番号',
+  `name` varchar(255) NOT NULL,
+  `temperature` decimal(3,1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='来場者の氏名と体温情報';
+
+--
+-- ダンプしたテーブルのインデックス
+--
+
+--
+-- テーブルのインデックス `booking`
+--
+ALTER TABLE `booking`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- テーブルのインデックス `pre_regist`
+--
+ALTER TABLE `pre_regist`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- テーブルのインデックス `visitor`
+--
+ALTER TABLE `visitor`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- ダンプしたテーブルのAUTO_INCREMENT
+--
+
+--
+-- テーブルのAUTO_INCREMENT `booking`
+--
+ALTER TABLE `booking`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+--
+-- テーブルのAUTO_INCREMENT `pre_regist`
+--
+ALTER TABLE `pre_regist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+--
+-- テーブルのAUTO_INCREMENT `visitor`
+--
+ALTER TABLE `visitor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
