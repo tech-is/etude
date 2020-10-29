@@ -18,7 +18,7 @@
               <li class="completed"><span class="bubble"></span>案内</li>
               <li class="active" ><span class="bubble"></span>全員終了</li>
             </ul>
-            <form role="form" action="<?php base_url(); ?>Group_adv/finish" method="post" >
+            <form role="form" action="/Group_adv/finish" method="post" >
               <div class="card-body">
                   <p class="text-danger" style="text-align:center">ご協力ありがとうございました</p>
               </div>

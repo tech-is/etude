@@ -19,9 +19,9 @@
               <li><span class="bubble"></span>全員終了</li>
             </ul>
               <?php if($_SESSION['last_number_flag']==true){ ?>
-              <form role="form" action="/index.php/Group_adv/measurement_finish" method="post">
+              <form role="form" action="/Group_adv/measurement_finish" method="post">
               <?php }else{ ?>
-              <form role="form" action="/index.php/Group_adv/temperature_measurement" method="post">
+              <form role="form" action="/Group_adv/temperature_measurement" method="post">
               <?php } ?>
               <!-- 検温結果を受け取る -->
               <?php if($value<37.5){ ?>
