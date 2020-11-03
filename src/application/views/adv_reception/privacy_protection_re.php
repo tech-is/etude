@@ -52,6 +52,8 @@
                   </div><!--/.privacy_inner-->
                     <p class="text-danger" style="text-align:center">ご協力・ご理解をいただけない場合は、入場をお断りさせていただきます。</p>
                 </div><!--/.privacy -->
+                <!-- <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" /> -->
+                <input type="hidden" name="<?php echo(html_escape($csrf_token_name));?>" value="<?php echo(html_escape($csrf_token_hash));?>">
               </div><!--/.card-body-->
               <div class="card-footer" style="text-align:center">
                 <button type="submit" name="no" class="btn btn-secondary">TOPに戻る</button>

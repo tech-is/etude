@@ -25,6 +25,7 @@
                   <p class="text-danger" style="text-align:center">ご協力・ご理解をいただけない場合は、入場をお断りさせていただきます。</p>
               </div>
               <form role="form" method="post" action="<?php base_url(); ?>/Group_adv/request">
+                <input type="hidden" name="<?php echo(html_escape($csrf_token_name));?>" value="<?php echo(html_escape($csrf_token_hash));?>">
                 <div class="card-footer" style="text-align:center">
                   <button type="submit" name="no" class="btn btn-secondary">TOPに戻る</button>
                   <button type="submit" name="yes" class="btn btn-primary">承諾する</button>

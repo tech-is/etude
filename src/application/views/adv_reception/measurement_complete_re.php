@@ -22,6 +22,7 @@
               <div class="card-body">
                   <p class="text-danger" style="text-align:center">ご協力ありがとうございました</p>
               </div>
+              <input type="hidden" name="<?php echo(html_escape($csrf_token_name));?>" value="<?php echo(html_escape($csrf_token_hash));?>">
               <div class="card-footer" style="text-align:center">
                 <button type="submit" name="finish" class="btn btn-primary">全員終了</button>
               </div>

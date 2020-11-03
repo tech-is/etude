@@ -30,6 +30,7 @@
                   </div>
                   <!-- QR -->
                 </div><!-- /.card-body -->
+                <input type="hidden" name="<?php echo(html_escape($csrf_token_name));?>" value="<?php echo(html_escape($csrf_token_hash));?>">
                 <div class="card-footer" style="text-align:center">
                   <button type="button" class="btn btn-secondary" onclick="location.href='<?php base_url(); ?>/Group_adv/'">TOPに戻る</button>
                   <!-- <button type="submit" class="btn btn-primary">承諾する</button> -->

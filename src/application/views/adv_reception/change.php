@@ -28,7 +28,6 @@
                 <p class="text-danger" style="text-align:center"><small>キャンセルされる方は、名前の横の✅の✔を外してください</small></p>
                 <p class="text-danger" style="text-align:center"><small>参加者氏名に変更がある場合は、✅した状態で入力し直してください</small></p>
                 <p class="text-danger" style="text-align:center"><small>この画面で参加者数の追加はできません</small></p>
-
                 <div class="cp_ipcheck" style="text-align:center">
                   <label class="col-12">
                     <div class="form-group">
@@ -52,6 +51,7 @@
                         <?php endif; ?>
                       <?php endif; ?>
                 </div><!-- /.cp_ipcheck -->
+                <input type="hidden" name="<?php echo(html_escape($csrf_token_name));?>" value="<?php echo(html_escape($csrf_token_hash));?>">
                 <div class="card-footer" style="text-align:center">
                   <button type="button" class="btn btn-secondary" onclick="location.href='<?php base_url(); ?>/Group_adv/confirmation'">戻る</a>
                   <button type="submit" class="btn btn-primary" >確認する</button>

@@ -20,8 +20,10 @@
             </ul>
               <?php if($_SESSION['last_number_flag']==true){ ?>
               <form role="form" action="/Group_adv/measurement_finish" method="post">
+              <input type="hidden" name="<?php echo(html_escape($csrf_token_name));?>" value="<?php echo(html_escape($csrf_token_hash));?>">
               <?php }else{ ?>
               <form role="form" action="/Group_adv/temperature_measurement" method="post">
+              <input type="hidden" name="<?php echo(html_escape($csrf_token_name));?>" value="<?php echo(html_escape($csrf_token_hash));?>">
               <?php } ?>
               <!-- 検温結果を受け取る -->
               <?php if($value<37.5){ ?>
@@ -37,6 +39,7 @@
                     <p class="text-danger" style="text-align:center">再測定にご協力ください。</p>
                 </div><!-- /.card-body -->
               <?php } ?>
+                <input type="hidden" name="<?php echo(html_escape($csrf_token_name));?>" value="<?php echo(html_escape($csrf_token_hash));?>">
                 <div class="card-footer" style="text-align:center">
                 <?php if($_SESSION['last_number_flag']==true){ ?>
                   <button type="submit" class="btn btn-primary" name="finish">完了</button>
@@ -44,6 +47,8 @@
                   <button type="submit" class="btn btn-primary" name="within_range">OK！次の人へ</button>
                 <?php } ?>
                 </div>
+
+                <div class="card-footer" style="text-align:center">
               </form>
           </div><!-- /.card-info -->
         </div><!-- /.card -->
