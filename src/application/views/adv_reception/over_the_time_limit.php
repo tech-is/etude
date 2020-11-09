@@ -41,6 +41,7 @@
                     <?php endif; ?>
                   </div><!-- /.row -->
                 </div><!-- /.card-body -->
+                <input type="hidden" name="<?php echo(html_escape($csrf_token_name));?>" value="<?php echo(html_escape($csrf_token_hash));?>">
                 <div class="card-footer text-center">
                   <!-- <?php $message = $_SESSION['error_message']?> -->
                   <p class="text-danger" style="text-align:center"><small>大変申し訳ございませんが、<?php echo htmlspecialchars($_SESSION['error_message_1']);?></small></p>

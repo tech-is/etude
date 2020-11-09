@@ -19,6 +19,7 @@
                 <li><span class="bubble"></span>全員終了</li>
               </ul>
               <form role="form" method="post" action="<?php base_url(); ?>/Group_adv/measurement">
+              <input type="hidden" name="<?php echo(html_escape($csrf_token_name));?>" value="<?php echo(html_escape($csrf_token_hash));?>">
                 <div class="card-body" >
                       <div class="form-group">
                         <label for="exampleInputEmail1"><span class="label label-danger" style="color: red;">必須:</span> 検温結果を入力してください</label>

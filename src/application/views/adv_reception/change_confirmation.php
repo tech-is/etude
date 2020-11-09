@@ -44,6 +44,7 @@
                     <?php endif; ?>
                   </div>
                 </div><!-- /.card-body -->
+                <input type="hidden" name="<?php echo(html_escape($csrf_token_name));?>" value="<?php echo(html_escape($csrf_token_hash));?>">
                 <div class="card-footer" style="text-align:center">
                   <button type="button" class="btn btn-secondary" onclick="history.back()">戻る</button>
                   <button type="submit" class="btn btn-primary" onclick="location.href='<?php base_url(); ?>/Group/modify_data_temperature_measurement?id=<?php echo htmlspecialchars($booking_data['id']); ?>'">変更内容の登録、検温へ</button>

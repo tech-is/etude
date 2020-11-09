@@ -17,9 +17,12 @@ class Group_adv extends CI_Controller
 	{
 		//SESSIONデータ削除
 		$_SESSION = array();
+		//csrfチェック
+		$data['csrf_token_name'] = $this->security->get_csrf_token_name();
+		$data['csrf_token_hash'] = $this->security->get_csrf_hash();
 		//画面表示
 		$this->load->view('header');
-		$this->load->view('top');
+		$this->load->view('top',$data);
 		$this->load->view('footer');
 	}
 
@@ -28,9 +31,12 @@ class Group_adv extends CI_Controller
 	{
 		// if(isset($_POST['btn_dos']))
 		// {
+			//csrfチェック
+			$data['csrf_token_name'] = $this->security->get_csrf_token_name();
+			$data['csrf_token_hash'] = $this->security->get_csrf_hash();
 			//利用規約等同意確認画面
 			$this->load->view('header');
-			$this->load->view('adv_reception/privacy_protection_re');
+			$this->load->view('adv_reception/privacy_protection_re',$data);
 			$this->load->view('footer');
         // }
 	}
@@ -40,15 +46,21 @@ class Group_adv extends CI_Controller
 	{
 		if(isset($_POST['no']))
 		{
+			//csrfチェック
+			$data['csrf_token_name'] = $this->security->get_csrf_token_name();
+			$data['csrf_token_hash'] = $this->security->get_csrf_hash();
 			//TOP画面に戻る
 			header('location: /');
 			exit;
 		}
 		if(isset($_POST['yes']))
 		{
+			//csrfチェック
+			$data['csrf_token_name'] = $this->security->get_csrf_token_name();
+			$data['csrf_token_hash'] = $this->security->get_csrf_hash();
 			//同意後、おねがい画面
 			$this->load->view('header');
-			$this->load->view('adv_reception/note_re');
+			$this->load->view('adv_reception/note_re',$data);
 			$this->load->view('footer');
 		}
 	}
@@ -58,15 +70,21 @@ class Group_adv extends CI_Controller
 	{
 		if(isset($_POST['no']))
 		{
+			//csrfチェック
+			$data['csrf_token_name'] = $this->security->get_csrf_token_name();
+			$data['csrf_token_hash'] = $this->security->get_csrf_hash();
 			//TOP画面に戻る
 			header('location: /');
 			exit;
 		}
 		if(isset($_POST['yes']))
 		{
+			//csrfチェック
+			$data['csrf_token_name'] = $this->security->get_csrf_token_name();
+			$data['csrf_token_hash'] = $this->security->get_csrf_hash();
 			//承諾後、QRコード読み込み画面
 			$this->load->view('header');
-			$this->load->view('adv_reception/qr');
+			$this->load->view('adv_reception/qr',$data);
 			$this->load->view('footer');
 		}
 	}
@@ -109,6 +127,7 @@ class Group_adv extends CI_Controller
 							//csrfチェック
 							$data['csrf_token_name'] = $this->security->get_csrf_token_name();
 							$data['csrf_token_hash'] = $this->security->get_csrf_hash();
+							//確認画面へ
 							$this->load->view('header');
 							$this->load->view('adv_reception/confirmation_re',$data);
 							$this->load->view('footer');
@@ -118,6 +137,7 @@ class Group_adv extends CI_Controller
 									//csrfチェック
 									$data['csrf_token_name'] = $this->security->get_csrf_token_name();
 									$data['csrf_token_hash'] = $this->security->get_csrf_hash();
+									//エラー画面へ
 									$this->load->view('header');
 									$this->load->view('adv_reception/over_the_time_limit',$data);
 									$this->load->view('footer');
@@ -128,6 +148,7 @@ class Group_adv extends CI_Controller
 						//csrfチェック
 						$data['csrf_token_name'] = $this->security->get_csrf_token_name();
 						$data['csrf_token_hash'] = $this->security->get_csrf_hash();
+						//エラー画面へ
 						$this->load->view('header');
 						$this->load->view('adv_reception/over_the_time_limit',$data);
 						$this->load->view('footer');
@@ -138,6 +159,7 @@ class Group_adv extends CI_Controller
 					//csrfチェック
 					$data['csrf_token_name'] = $this->security->get_csrf_token_name();
 					$data['csrf_token_hash'] = $this->security->get_csrf_hash();
+					//エラー画面へ
 					$this->load->view('header');
 					$this->load->view('adv_reception/over_the_time_limit',$data);
 					$this->load->view('footer');
@@ -148,6 +170,7 @@ class Group_adv extends CI_Controller
 				//csrfチェック
 				$data['csrf_token_name'] = $this->security->get_csrf_token_name();
 				$data['csrf_token_hash'] = $this->security->get_csrf_hash();
+				//エラー画面へ
 				$this->load->view('header');
 				$this->load->view('adv_reception/over_the_time_limit',$data);
 				$this->load->view('footer');
@@ -158,6 +181,7 @@ class Group_adv extends CI_Controller
 			//csrfチェック
 			$data['csrf_token_name'] = $this->security->get_csrf_token_name();
 			$data['csrf_token_hash'] = $this->security->get_csrf_hash();
+			//エラー画面へ
 			$this->load->view('header');
 			$this->load->view('adv_reception/invalid_qr',$data);
 			$this->load->view('footer');
@@ -176,6 +200,7 @@ class Group_adv extends CI_Controller
 		//csrfチェック
 		$data['csrf_token_name'] = $this->security->get_csrf_token_name();
 		$data['csrf_token_hash'] = $this->security->get_csrf_hash();
+		//確認画面へ
 		$this->load->view('header');
 		$this->load->view('adv_reception/confirmation_re',$data);
 		$this->load->view('footer');
@@ -193,6 +218,7 @@ class Group_adv extends CI_Controller
 		//csrfチェック
 		$data['csrf_token_name'] = $this->security->get_csrf_token_name();
 		$data['csrf_token_hash'] = $this->security->get_csrf_hash();
+		//変更画面へ
 		$this->load->view('header');
 		$this->load->view('adv_reception/change',$data);
 		$this->load->view('footer');
@@ -229,6 +255,7 @@ class Group_adv extends CI_Controller
 		//csrfチェック
 		$data['csrf_token_name'] = $this->security->get_csrf_token_name();
 		$data['csrf_token_hash'] = $this->security->get_csrf_hash();
+		//変更内容確認画面へ
 		$this->load->view('header');
 		$this->load->view('adv_reception/change_confirmation',$data);
 		$this->load->view('footer');
@@ -293,9 +320,6 @@ class Group_adv extends CI_Controller
 		//受付情報の取得
 		$data['booking_data'] = $this->Booking_model->get_record($id);
 		$data['visitor_data'] = $this->Booking_model->get_visitor_record($booking_id);
-		//csrfチェック
-		$data['csrf_token_name'] = $this->security->get_csrf_token_name();
-		$data['csrf_token_hash'] = $this->security->get_csrf_hash();
 		//何人目の処理かを判定させる為に参加者人数が必要。numberの最後の数を人数の最大値として使用。
 		$last_number=$this->group_model->last($_SESSION['id']);
 		//last_number_flagは、$last_numberと$_SESSION['num']の値が等しい時を意味し、within_range画面の判断材料とする
@@ -305,7 +329,10 @@ class Group_adv extends CI_Controller
 		//$_SESSION['num']が$last_numberよりも大きい値なら画面表示へ進まない
 		if($last_number>$_SESSION['num']){
 			$data['visitor_num']=$_SESSION['num'];
-
+			//csrfチェック
+			$data['csrf_token_name'] = $this->security->get_csrf_token_name();
+			$data['csrf_token_hash'] = $this->security->get_csrf_hash();
+			//入力画面へ
 			$this->load->view('header');
 			$this->load->view('adv_reception/temperature_measurement_re', $data);
 			$this->load->view('footer');
@@ -330,6 +357,9 @@ class Group_adv extends CI_Controller
 
 			//結果を案内画面へ（結果によって分岐処理）
 			$temperature['value']=$_SESSION['temperature'];
+			//csrfチェック
+			$temperature['csrf_token_name'] = $this->security->get_csrf_token_name();
+			$temperature['csrf_token_hash'] = $this->security->get_csrf_hash();
 			$this->load->view('header');
 			$this->load->view('adv_reception/judgment_re',$temperature);
 			$this->load->view('footer');
@@ -339,9 +369,12 @@ class Group_adv extends CI_Controller
 	// 11.入館案内画面表示//
 	public function measurement_finish()
 	{
-	$this->load->view('header');
-	$this->load->view('adv_reception/measurement_complete_re');
-	$this->load->view('footer');
+		//csrfチェック
+			$data['csrf_token_name'] = $this->security->get_csrf_token_name();
+			$data['csrf_token_hash'] = $this->security->get_csrf_hash();
+		$this->load->view('header');
+		$this->load->view('adv_reception/measurement_complete_re',$data);
+		$this->load->view('footer');
 	}
 	// 12.TOP画面へ戻る//
 	public function finish()
@@ -350,6 +383,9 @@ class Group_adv extends CI_Controller
 		{
 			//SESSIONデータ削除
 			$this->session->sess_destroy();
+			//csrfチェック
+			$data['csrf_token_name'] = $this->security->get_csrf_token_name();
+			$data['csrf_token_hash'] = $this->security->get_csrf_hash();
 			//TOP画面に戻す
 			header("Location: index");
 			exit;

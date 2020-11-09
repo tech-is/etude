@@ -43,6 +43,7 @@
                     <?php endif; ?>
                   </div><!-- /.row -->
                 </div><!-- /.card-body -->
+                <input type="hidden" name="<?php echo(html_escape($csrf_token_name));?>" value="<?php echo(html_escape($csrf_token_hash));?>">
                 <div class="card-footer" style="text-align:center">
                   <p class="text-danger" style="text-align:center">予約時間の変更や、人数を増やす変更はできません。</p>
                   <button type="button" class="btn btn-secondary" onclick="location.href='<?php base_url(); ?>/Group_adv/change/'">変更する</button>
